@@ -10,6 +10,21 @@ const fileUpload = require("express-fileupload");
 const axios = require("axios");
 const port = process.env.PORT || 45047;
 
+// import mongoose
+// const mongoose = require("mongoose");
+// const { json } = require("express");
+// mongoose.Promise = global.Promise;
+// mongoose
+//   .connect("mongodb://localhost:8080/gcs", {
+//     useNewUrlParser: true,
+//   })
+//   .then(() => {
+//     console.log("successfully connected to the database");
+//   })
+//   .catch((err) => {
+//     console.log("error connecting to the database");
+//     process.exit();
+//   });
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
@@ -175,6 +190,97 @@ app.post(
       });
   }
 );
+
+// const categorySchema = new mongoose.Schema({
+//   name: {
+//     type: String,
+//     required: true,
+//   },
+// });
+
+// const Category = mongoose.model("Category", categorySchema);
+
+// app.get(
+//   "/send-message",
+
+//   async (req, res) => {
+//     const category = await Category.find();
+
+//     // Category.find(function (err, docs) {
+//     //   if (err) {
+//     //     console.log(err);
+//     //     return;
+//     //   }
+//     //   docs.forEach(function (doc, index) {
+//     //     console.log(index);
+//     //     console.log(index + " key: " + doc.name);
+//     //     console.log(index + " asadr: " + doc.__v);
+//     //   });
+//     // });
+
+//     // category.forEach(function (u) {
+//     //   console.log(u.name);
+//     //   console.log(u.keys(nomor)[0]);
+//     // });
+
+//     category.map((cekData) => {
+//       // console.log(cekData);
+//       // console.log(cekData.name);
+//       // console.log("0" + cekData.__v);
+
+//       // const number = "a82293943564";
+//       // const message = cekData.name;
+//       // mulai
+//       const number = phoneNumberFormatter("0" + cekData.__v);
+//       const message = cekData.name;
+//       console.log(number);
+//       const isRegisteredNumber = checkRegisteredNumber(number);
+
+//       if (!isRegisteredNumber) {
+//         return res.status(422).json({
+//           status: false,
+//           message: "The number is not registered",
+//         });
+//       }
+//       try {
+//         client
+//           .sendMessage(number, message)
+//           .then((response) => {
+//             console.log(response);
+//             // res.status(200).json({
+//             //   status: true,
+//             //   response: response,
+//             // });
+//           })
+//           .catch((err) => {
+//             console.log(err);
+//             // res.status(500).json({
+//             //   status: false,
+//             //   response: err,
+//             // });
+//           });
+//       } catch (error) {
+//         console.log(error);
+//       }
+
+//       // akhir
+//     });
+//   }
+// );
+
+// console.log(category);
+// console.log(1);
+// console.log(category[1].name);
+
+// const number = "a82293943564";
+// const message = "aaa";
+// category.map((user) => {
+//   console.log(user.name);
+
+//   const number = "a82293943564";
+//   const message = user.name;
+
+// });
 
 // Send media
 app.post("/send-media", async (req, res) => {
