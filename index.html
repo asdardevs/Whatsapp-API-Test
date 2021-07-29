@@ -13,14 +13,20 @@
     <div class="container">
       <div id="app">
         <h1>Whatsapp API</h1>
+       <div class="row">
         <div class="card" style="width: 18rem">
           <img src="" class="card-img-top" alt="QR Code" id="qrcode" />
-
+          
           <div class="card-body">
+            <div id="kirim">
+
+            </div>
             <h5 class="card-title">Log:</h5>
             <ul class="logs"></ul>
           </div>
+       
         </div>
+       </div>
       </div>
     </div>
 
@@ -49,9 +55,12 @@
         socket.on("qr", function (src) {
           $("#qrcode").attr("src", src);
           $("#qrcode").show();
+        
         });
 
         socket.on("ready", function (data) {
+
+          $("#kirim").html('<a href="http://send.unm.ac.id/send-wa/"   class="btn btn-primary" >Kirim Pesan</a>');
           $("#qrcode").hide();
         });
 
